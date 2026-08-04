@@ -79,10 +79,10 @@ ANTHROPIC_API_KEY=...
 
 ```bash
 # Start an interactive voice session
-python docs/examples/listen_and_respond/listen_and_respond.py console
+cd docs/examples/listen_and_respond/ && lk agent dev listen_and_respond.py
 ```
 
-The `console` argument opens an interactive terminal session where you can speak or type with the agent.
+Then go to https://cloud.livekit.io/projects/p_1pxleywb0g0/agents/console?agentName=&autoStart=false
 
 ---
 

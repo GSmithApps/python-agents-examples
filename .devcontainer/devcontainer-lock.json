@@ -1,0 +1,19 @@
+{
+  "features": {
+    "ghcr.io/devcontainers-extra/features/uv:1": {
+      "version": "1.0.2",
+      "resolved": "ghcr.io/devcontainers-extra/features/uv@sha256:1ac5b9f17a9e9e745933d0ac2ecf758e06ed3da4423cd22c94cce4d482fd2dd8",
+      "integrity": "sha256:1ac5b9f17a9e9e745933d0ac2ecf758e06ed3da4423cd22c94cce4d482fd2dd8"
+    },
+    "ghcr.io/gsmithapps/dev-container-git-config/git-config:1": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/gsmithapps/dev-container-git-config/git-config@sha256:325aaf8312fbb4b4bae71f206743ccaa0447c8582590dc61f98f3121a1f5ef1b",
+      "integrity": "sha256:325aaf8312fbb4b4bae71f206743ccaa0447c8582590dc61f98f3121a1f5ef1b"
+    },
+    "ghcr.io/gsmithapps/dev-container-git-config/livekit-cli:1": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/gsmithapps/dev-container-git-config/livekit-cli@sha256:b7779e15fcb81f7ee924be41b5da305ab8cff717ef0133f7e40c29f72974d879",
+      "integrity": "sha256:b7779e15fcb81f7ee924be41b5da305ab8cff717ef0133f7e40c29f72974d879"
+    }
+  }
+}
