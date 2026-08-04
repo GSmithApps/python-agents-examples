@@ -25,7 +25,7 @@ from dotenv import load_dotenv
 from livekit.agents import JobContext, WorkerOptions, cli
 from livekit.agents.llm import function_tool
 from livekit.agents.voice import Agent, AgentSession, RunContext
-from livekit.plugins import cartesia, deepgram, openai, silero
+from livekit.plugins import cartesia, deepgram, openai
 from livekit.plugins import noise_cancellation
 
 from utils import load_prompt
@@ -148,7 +148,6 @@ class TriageAgent(BaseAgent):
             stt=deepgram.STT(),
             llm=openai.LLM(model="gpt-4o-mini"),
             tts=cartesia.TTS(),
-            vad=silero.VAD.load()
         )
 
     @function_tool
@@ -199,7 +198,6 @@ class SalesAgent(BaseAgent):
             stt=deepgram.STT(),
             llm=openai.LLM(model="gpt-4o-mini"),
             tts=cartesia.TTS(),
-            vad=silero.VAD.load()
         )
 
     @function_tool
@@ -318,7 +316,6 @@ class ReturnsAgent(BaseAgent):
             stt=deepgram.STT(),
             llm=openai.LLM(model="gpt-4o-mini"),
             tts=cartesia.TTS(),
-            vad=silero.VAD.load()
         )
 
     @function_tool

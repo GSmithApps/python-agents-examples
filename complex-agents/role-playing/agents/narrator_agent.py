@@ -22,7 +22,7 @@ import logging
 from typing import List, TYPE_CHECKING
 
 from livekit.agents.llm import function_tool
-from livekit.plugins import deepgram, openai, silero, inworld
+from livekit.plugins import deepgram, openai, inworld
 
 from agents.base_agent import BaseGameAgent
 from character import PlayerCharacter, NPCCharacter, CharacterClass, CharacterStats, Item
@@ -47,7 +47,6 @@ class NarratorAgent(BaseGameAgent):
             stt=deepgram.STT(),
             llm=openai.LLM(model="gpt-4o"),
             tts=inworld.TTS(voice="Hades"),
-            vad=silero.VAD.load()
         )
     
     async def on_enter(self) -> None:

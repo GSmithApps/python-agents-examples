@@ -24,7 +24,7 @@ from livekit.agents import JobContext, WorkerOptions, cli, RoomOutputOptions
 from livekit.agents.llm import function_tool
 from livekit.agents.voice import Agent, AgentSession, RunContext
 from livekit.plugins.turn_detector.english import EnglishModel
-from livekit.plugins import silero, tavus, elevenlabs
+from livekit.plugins import tavus, elevenlabs
 import asyncio
 
 load_dotenv(dotenv_path=Path(__file__).parent.parent / '.env')
@@ -259,7 +259,6 @@ class AvatarAgent(Agent):
             tts=elevenlabs.TTS(
                 voice_id="21m00Tcm4TlvDq8ikWAM"
             ),
-            vad=silero.VAD.load(),
         )
 
     @function_tool

@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 from livekit.agents import JobContext, WorkerOptions, cli
 from livekit.agents.llm import function_tool
 from livekit.agents.voice import Agent, AgentSession, RunContext
-from livekit.plugins import cartesia, deepgram, openai, silero
+from livekit.plugins import cartesia, deepgram, openai
 
 from utils import load_prompt
 
@@ -115,7 +115,6 @@ class TriageAgent(BaseAgent):
             stt="assemblyai/universal-streaming",
             llm="openai/gpt-4.1-mini",
             tts="cartesia/sonic-2:6f84f4b8-58a2-430c-8c79-688dad597532",
-            vad=silero.VAD.load()
         )
 
     @function_tool
@@ -136,7 +135,6 @@ class SupportAgent(BaseAgent):
             stt=deepgram.STT(),
             llm=openai.LLM(model="gpt-4o-mini"),
             tts=cartesia.TTS(),
-            vad=silero.VAD.load()
         )
 
     @function_tool
@@ -157,7 +155,6 @@ class BillingAgent(BaseAgent):
             stt=deepgram.STT(),
             llm=openai.LLM(model="gpt-4o-mini"),
             tts=cartesia.TTS(),
-            vad=silero.VAD.load()
         )
 
     @function_tool

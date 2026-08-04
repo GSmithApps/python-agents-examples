@@ -46,7 +46,7 @@ from livekit.agents import (
     Agent,
     AgentSession, inference,
 )
-from livekit.plugins import openai, silero, deepgram, noise_cancellation
+from livekit.plugins import openai, deepgram, noise_cancellation
 from livekit.plugins.turn_detector.english import EnglishModel
 
 # Load environment variables
@@ -241,7 +241,6 @@ async def entrypoint(ctx: JobContext):
             voice="ash",
         ),
         turn_detection=EnglishModel(),
-        vad=silero.VAD.load(),
     )
 
     await session.start(

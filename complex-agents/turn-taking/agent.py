@@ -23,9 +23,9 @@ from dotenv import load_dotenv
 from typing import AsyncIterable, Optional
 from dataclasses import dataclass
 from livekit import rtc
-from livekit.agents import JobContext, WorkerOptions, cli, llm
+from livekit.agents import JobContext, WorkerOptions, cli, inference, llm
 from livekit.agents.voice import Agent, AgentSession
-from livekit.plugins import silero, gladia
+from livekit.plugins import gladia
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
 
 load_dotenv(dotenv_path=Path(__file__).parent.parent / '.env')
@@ -112,7 +112,9 @@ class SimpleAgent(Agent):
             stt="assemblyai/universal-streaming",
             llm="openai/gpt-4.1-mini",
             tts="cartesia/sonic-2:6f84f4b8-58a2-430c-8c79-688dad597532",
-            vad=silero.VAD.load(),
+            # Explicit VAD: this example measures end-of-utterance probability, so
+            # the endpointing window is part of what it demonstrates.
+            vad=inference.VAD(model="silero", min_silence_duration=0.55),
             turn_detection=self.custom_turn_detector
         )
 
@@ -141,7 +143,9 @@ async def entrypoint(ctx: JobContext):
 
     session = AgentSession[TurnTakingUserData](
         userdata=userdata,
-        vad=silero.VAD.load(),
+        # Explicit VAD: this example measures end-of-utterance probability, so
+        # the endpointing window is part of what it demonstrates.
+        vad=inference.VAD(model="silero", min_silence_duration=0.55),
         stt=gladia.STT(
             languages=["en", "fr", "de", "pt", "zh", "ja", "ko", "id", "ru", "nl", "tr", "es", "it"]
         ),

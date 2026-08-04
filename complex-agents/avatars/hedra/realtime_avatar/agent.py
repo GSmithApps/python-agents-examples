@@ -22,7 +22,6 @@ from livekit.agents import (
 from livekit.agents.voice import AgentSession, Agent
 from livekit.plugins import (
     openai,
-    silero,
     hedra,
 )
 
@@ -60,7 +59,6 @@ async def entrypoint(ctx: agents.JobContext):
 
     session = AgentSession(
         llm=openai.realtime.RealtimeModel(),
-        vad=silero.VAD.load()
     )
     
     await avatar_session.start(

@@ -24,7 +24,6 @@ from livekit.agents.voice import Agent, RunContext
 from livekit.agents.llm import function_tool
 from livekit.plugins import (
     aws,
-    silero
 )
 import logging
 import json
@@ -313,7 +312,6 @@ async def entrypoint(ctx: agents.JobContext):
     session = AgentSession[UserData](
         userdata=userdata,
         llm=aws.realtime.RealtimeModel(),
-        vad=silero.VAD.load()
     )
     
     userdata.session = session

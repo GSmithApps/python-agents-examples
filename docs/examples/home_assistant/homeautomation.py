@@ -22,7 +22,6 @@ from dotenv import load_dotenv
 from livekit import rtc
 from livekit.agents import JobContext, WorkerOptions, cli, Agent, AgentSession, inference, function_tool
 from livekit.agents.voice.agent_activity import StopResponse
-from livekit.plugins import silero
 
 load_dotenv()
 
@@ -52,7 +51,6 @@ class SimpleAgent(Agent):
                 model="cartesia/sonic-3",
                 voice="9626c31c-bec5-4cca-baa8-f8ba9e84c8bc",
             ),
-            vad=silero.VAD.load()
         )
         self.wake_word_detected = False
         self.wake_word = WAKE_WORD

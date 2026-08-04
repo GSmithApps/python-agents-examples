@@ -23,7 +23,6 @@ from pathlib import Path
 from typing import Optional, Dict, Any
 from dotenv import load_dotenv
 from livekit.agents import JobContext, WorkerOptions, cli, Agent, AgentSession, inference, RunContext, function_tool, RoomOutputOptions
-from livekit.plugins import silero
 
 load_dotenv()
 
@@ -131,7 +130,6 @@ class RPCStateAgent(Agent):
                 model="cartesia/sonic-3",
                 voice="9626c31c-bec5-4cca-baa8-f8ba9e84c8bc",
             ),
-            vad=silero.VAD.load()
         )
 
     @function_tool

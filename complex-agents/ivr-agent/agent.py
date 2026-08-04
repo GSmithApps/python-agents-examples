@@ -25,10 +25,10 @@ from pathlib import Path
 from dotenv import load_dotenv
 from livekit import rtc
 from livekit import agents
-from livekit.agents import JobContext, WorkerOptions, cli
+from livekit.agents import JobContext, WorkerOptions, cli, inference
 from livekit.agents.llm import function_tool
 from livekit.agents.voice import Agent, AgentSession, RunContext
-from livekit.plugins import openai, silero, cartesia, deepgram
+from livekit.plugins import openai, cartesia, deepgram
 from pydantic import Field
 
 load_dotenv(dotenv_path=Path(__file__).parent.parent / '.env')
@@ -128,7 +128,9 @@ async def entrypoint(ctx: JobContext):
             stt="assemblyai/universal-streaming",
             llm="openai/gpt-4.1-mini",
             tts="cartesia/sonic-2:6f84f4b8-58a2-430c-8c79-688dad597532",
-            vad=silero.VAD.load(),
+            # Explicit VAD: min_endpointing_delay below is hand-tuned for IVR menus,
+            # so keep the VAD's silence window explicit alongside it.
+            vad=inference.VAD(model="silero", min_silence_duration=0.55),
             min_endpointing_delay=0.75
         )
 

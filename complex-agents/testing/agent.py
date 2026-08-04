@@ -24,7 +24,7 @@ from dotenv import load_dotenv
 from livekit.agents import JobContext, WorkerOptions, cli
 from livekit.agents.llm import function_tool
 from livekit.agents.voice import Agent, AgentSession, RunContext
-from livekit.plugins import deepgram, openai, silero
+from livekit.plugins import deepgram, openai
 
 logger = logging.getLogger("function-calling")
 logger.setLevel(logging.INFO)
@@ -52,7 +52,6 @@ class FunctionAgent(Agent):
             stt="assemblyai/universal-streaming",
             llm="openai/gpt-4.1-mini",
             tts="cartesia/sonic-2:6f84f4b8-58a2-430c-8c79-688dad597532",
-            vad=silero.VAD.load()
         )
 
     @function_tool

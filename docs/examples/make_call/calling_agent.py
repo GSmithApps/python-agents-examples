@@ -19,7 +19,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from livekit.agents import JobContext, WorkerOptions, cli, Agent, AgentSession
-from livekit.plugins import openai, silero, deepgram
+from livekit.plugins import openai, deepgram
 
 load_dotenv()
 
@@ -46,7 +46,6 @@ class SimpleAgent(Agent):
                 model="cartesia/sonic-3",
                 voice="9626c31c-bec5-4cca-baa8-f8ba9e84c8bc",
             ),
-            vad=silero.VAD.load()
         )
 
     async def on_enter(self):

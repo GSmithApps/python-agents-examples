@@ -21,7 +21,7 @@ from dotenv import load_dotenv
 
 from livekit.agents import ConversationItemAddedEvent, JobContext, WorkerOptions, cli, RoomInputOptions
 from livekit.agents.voice import AgentSession
-from livekit.plugins import silero, noise_cancellation, openai
+from livekit.plugins import noise_cancellation, openai
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
 
 
@@ -78,7 +78,6 @@ async def entrypoint(ctx: JobContext):
     # Create the agent session with LiveKit inference gateway
     session = AgentSession[SurfBookingData](
         userdata=userdata,
-        vad=silero.VAD.load(),
         stt="deepgram/nova-2",
         llm="openai/gpt-4o",
         tts="cartesia/sonic-3:a167e0f3-df7e-4d52-a9c3-f949145efdab",

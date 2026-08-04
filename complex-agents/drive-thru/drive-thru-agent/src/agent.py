@@ -22,7 +22,6 @@ from livekit.agents import (
     cli,
     function_tool,
 )
-from livekit.plugins import silero
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
 from livekit.rtc import RpcInvocationData
 from pydantic import Field
@@ -525,7 +524,6 @@ async def entrypoint(ctx: JobContext):
         llm="openai/gpt-4.1",
         tts="cartesia/sonic-2:6f84f4b8-58a2-430c-8c79-688dad597532",
         turn_detection=MultilingualModel(),
-        vad=silero.VAD.load(),
         max_tool_steps=10,
     )
 

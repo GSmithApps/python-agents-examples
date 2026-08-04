@@ -28,7 +28,6 @@ from livekit.agents import (
     Agent, AgentSession, JobContext, WorkerOptions, cli, function_tool, RoomInputOptions
 )
 from livekit.agents.voice import RunContext
-from livekit.plugins import silero
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
 from livekit.plugins import noise_cancellation
 
@@ -310,7 +309,6 @@ async def entrypoint(ctx: JobContext):
     
     session = AgentSession[ExaUserData](
         userdata=userdata,
-        vad=silero.VAD.load(),
         stt="assemblyai/universal-streaming",
         llm="deepseek-ai/deepseek-v3",
         tts="inworld/inworld-tts-1:Ashley",

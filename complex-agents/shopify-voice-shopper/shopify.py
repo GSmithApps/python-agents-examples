@@ -28,7 +28,7 @@ from livekit.agents.llm import function_tool, ChatChunk, FunctionTool
 from livekit.agents.llm.chat_context import ChatContext, ChatMessage
 from livekit.agents.voice import RunContext, ModelSettings
 import json
-from livekit.plugins import speechmatics, openai, silero, cartesia
+from livekit.plugins import speechmatics, openai, cartesia
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
 from dataclasses import dataclass
 import urllib.parse
@@ -225,7 +225,6 @@ async def entrypoint(ctx: JobContext):
 
     session = AgentSession[ShopifyUserData](
         userdata=userdata,
-        vad=silero.VAD.load(),
         stt=speechmatics.STT(),
         llm=openai.LLM(model="gpt-4.1-mini"),
         tts=cartesia.TTS(voice="da69d796-4603-4419-8a95-293bfc5679eb"),

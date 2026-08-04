@@ -23,7 +23,7 @@ from livekit import rtc
 from livekit.agents import JobContext, WorkerOptions, cli, get_job_context
 from livekit.agents.llm import function_tool, ImageContent, ChatContext, ChatMessage
 from livekit.agents.voice import Agent, AgentSession, RunContext
-from livekit.plugins import deepgram, openai, silero, rime
+from livekit.plugins import deepgram, openai, rime
 
 logger = logging.getLogger("vision-agent")
 logger.setLevel(logging.INFO)
@@ -44,7 +44,6 @@ class VisionAgent(Agent):
             stt=deepgram.STT(),
             llm=openai.LLM.with_x_ai(model="grok-2-vision", tool_choice=None),
             tts=rime.TTS(),
-            vad=silero.VAD.load()
         )
 
     async def on_enter(self):

@@ -28,7 +28,6 @@ from livekit.plugins import (
     inworld,
     deepgram,
     noise_cancellation,
-    silero,
     hedra,
 )
 
@@ -69,7 +68,6 @@ async def entrypoint(ctx: agents.JobContext):
         stt=deepgram.STT(model="nova-3", language="multi"),
         llm=openai.LLM(),
         tts=inworld.TTS(voice="Alex"),
-        vad=silero.VAD.load(),
         turn_detection=MultilingualModel(),
     )
     

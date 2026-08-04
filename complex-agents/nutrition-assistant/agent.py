@@ -24,7 +24,6 @@ from livekit import agents
 from livekit.agents.voice import AgentSession, Agent, RunContext, room_io
 from livekit.plugins import (
     openai,
-    silero,
     noise_cancellation
 )
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
@@ -498,7 +497,6 @@ async def entrypoint(ctx: agents.JobContext):
             model="gpt-4o-realtime-preview-2025-06-03",
             voice="sage"
         ),
-        vad=silero.VAD.load(),
         turn_detection=MultilingualModel()
     )
 

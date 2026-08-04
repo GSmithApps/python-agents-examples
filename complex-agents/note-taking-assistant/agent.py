@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 from livekit.agents import JobContext, WorkerOptions, cli, metrics
 from livekit.agents.voice import Agent, AgentSession, MetricsCollectedEvent
 from livekit.agents.llm import ChatContext, ChatMessage
-from livekit.plugins import openai, silero, deepgram
+from livekit.plugins import openai, deepgram
 from livekit.agents.telemetry import set_tracer_provider
 from typing import List
 
@@ -278,7 +278,6 @@ async def entrypoint(ctx: JobContext):
             You are a note-taking assistant.
         """,
         stt=deepgram.STTv2(eager_eot_threshold=0.5),
-        vad=silero.VAD.load()
         )
 
     # Create note-taking assistant

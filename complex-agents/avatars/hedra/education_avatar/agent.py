@@ -24,7 +24,7 @@ from livekit.agents import JobContext, WorkerOptions, cli, WorkerPermissions, Ro
 from livekit.agents.llm import function_tool
 from livekit.agents.voice import Agent, AgentSession, RunContext
 from livekit.plugins.turn_detector.english import EnglishModel
-from livekit.plugins import openai, silero, deepgram, hedra, inworld
+from livekit.plugins import openai, deepgram, hedra, inworld
 from PIL import Image
 import asyncio
 import os
@@ -261,7 +261,6 @@ class AvatarAgent(Agent):
             tts=inworld.TTS(
                 voice="Hades"
             ),
-            vad=silero.VAD.load(),
         )
 
     @function_tool
