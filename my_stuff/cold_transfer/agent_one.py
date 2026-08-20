@@ -18,12 +18,15 @@ from livekit import api
 
 from asyncio import sleep
 
+from my_stuff.my_utils import MyLogger
 
 
 load_dotenv()
 
 logger = logging.getLogger("listen-and-respond")
 logger.setLevel(logging.INFO)
+
+my_logger = MyLogger(logger)
 
 async def transfer_call(participant_identity: str, room_name: str) -> None:
   async with api.LiveKitAPI() as livekit_api:
@@ -57,18 +60,18 @@ class ListenAndRespondAgent(Agent):
     async def on_enter(self):
         
         self.session.generate_reply()
-        logger.info(f"💚 before sleep {self.session.room_io.room.num_participants} participants")
+        my_logger.info(f"before sleep {self.session.room_io.room.num_participants} participants")
 
         await sleep(10)
 
         participants = self.session.room_io.room.remote_participants
 
         
-        logger.info(f"💚 {self.session.room_io.room.num_participants} participants")
+        my_logger.info(f"{self.session.room_io.room.num_participants} participants")
 
         
         for key, value in participants.items():
-            logger.info(f"💚 {key}: {value}")
+            my_logger.info(f"{key}: {value}")
 
             await transfer_call(key, self.session.room_io.room.name)
 

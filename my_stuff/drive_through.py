@@ -22,7 +22,7 @@ from livekit.agents import JobContext, JobProcess, Agent, AgentSession, inferenc
 from livekit.plugins import silero
 from pydantic import Field
 
-from my_utils import MyLogger
+from my_stuff.my_utils import MyLogger
 
 
 load_dotenv()
