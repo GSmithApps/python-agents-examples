@@ -28,7 +28,8 @@
 				"anthropic.claude-code",
 				"mhutchie.git-graph",
 				"eamodio.gitlens",
-				"tamasfe.even-better-toml"
+				"tamasfe.even-better-toml",
+				"sleistner.vscode-fileutils"
 			]
 		}
 	},
