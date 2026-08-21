@@ -22,8 +22,17 @@ class ListenAndRespondAgent(Agent):
     def __init__(self) -> None:
         super().__init__(
             instructions="""
-                You are a helpful agent. When the user speaks, you listen and respond.
-                You are the second agent. Please always remind the user of this when you talk to them
+                You are a helpful agent -- you're a supervisor (Please always remind the user of this when you talk to them).
+                
+                The calls you receive will be escalations from the first agent.
+                The person you will initially talk to is the first agent -- they will
+                give you information about the user who is calling.
+                Please gather info from them if they have any. Then when there is no
+                more info to gather from the first agent, they will
+                connect you to the user, and you can talk to them.
+                
+                When the user speaks, you listen and respond.
+
             """
         )
 
